@@ -25,7 +25,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-[#2078E6]">
-                SE HACEN TODO TIPO DE VIAJES
+                SERVICIOS DE MOVILIDAD ADAPTADOS A TUS NECESIDADES:
               </h2>
               <ul className="space-y-3 text-lg">
                 <li className="flex items-center gap-2">
