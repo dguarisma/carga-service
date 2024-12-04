@@ -35,7 +35,6 @@ export function ServiceForm() {
      }) */
     try {
       await sendEmail(formData);
-      console.log(formData);
       alert('Correo electrónico enviado con éxito!');
     } catch (error) {
       console.log(error);
@@ -44,8 +43,6 @@ export function ServiceForm() {
       setIsSubmitting(false);
     }
   };
-
-
 
   return (
     <Card className="w-full max-w-2xl mx-auto">

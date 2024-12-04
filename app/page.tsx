@@ -25,7 +25,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
               <h2 className="sm:text-2xl text-balance text-lg font-bold text-[#2078E6]">
-                SERVICIOS DE TRASLADOS ADAPTADOS A TUS NECESIDADES:
+                NUESTROS SERVICIOS:
               </h2>
               <ul className="space-y-3 text-base sm:text-lg">
                 <li className="flex items-center gap-2">

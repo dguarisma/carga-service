@@ -1,6 +1,4 @@
-import { Resend } from 'resend';
-
-const resend = new Resend('re_QthYx5UX_A2xgYy2Brqar8gYrmHFUwtZe'); // Reemplaza con tu API Key
+import emailjs from '@emailjs/browser'
 
 interface FormData {
   name: string;
@@ -17,136 +15,45 @@ interface FormData {
 export const sendEmail = async (formData: FormData) => {
 
   try {
-    console.log(formData);
-
-    const url = 'https://api.resend.com/emails';
-    const headers = {
-      'Authorization': `Bearer re_QthYx5UX_A2xgYy2Brqar8gYrmHFUwtZe`, // Reemplaza con tu API Key
-      'Content-Type': 'application/json'
-    };
-
-    const body = JSON.stringify({
-      from: 'Carga Service <onboarding@cargaservice.com>',
-      to: ['davidguarisma@gmail.com'],
-      subject: 'Nueva Solicitud de Transporte',
-      html: '<p>it works!</p>'
+    emailjs.init({
+      publicKey: 'jm1Z-3tJFhFfHL_dK',
+      blockHeadless: true,
+      limitRate: {
+        id: 'app',
+        throttle: 10000,
+      },
     });
 
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: headers,
-        body: body
-      });
+    const templateParams = {
 
-      const data = await response.json();
+      to_name: formData?.name,
+      to_email: "carga.service@gmail.com",
+      name: formData?.name || "Sin información",
+      email: formData?.email || "Sin información",
+      phone: formData?.phone || "Sin información",
+      originAddress: formData?.originAddress || "Sin información",
+      destinationAddress: formData?.destinationAddress || "Sin información",
+      cargoType:
+        formData?.cargoType === "light"
+          ? "Ligera"
+          : formData?.cargoType === "medium"
+            ? "Mediana"
+            : formData?.cargoType === "heavy"
+              ? "Pesada"
+              : "Sin información",
+      date: formData?.date || "Sin información",
+      time: formData?.time || "Sin información",
+      comments: formData?.comments || "Ninguno",
+    };
 
-      if (response.ok) {
-        console.log('Email sent successfully:', data);
-      } else {
-        console.error('Error sending email:', data);
-      }
-    } catch (error) {
-      console.error('Network error:', error);
-    }
-
-
-    /*    return await resend.emails.send({
-         from: "<onboarding@resend.dev>",
-         to: formData?.email,
-         subject: "Nueva Solicitud de Transporte",
-         html: `
-             <!DOCTYPE html>
-             <html lang="en">
-             <head>
-               <meta charset="UTF-8">
-               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-               <title>Solicitud de Transporte</title>
-               <style>
-                 body {
-                   font-family: Arial, sans-serif;
-                   background-color: #f4f4f4;
-                   margin: 0;
-                   padding: 0;
-                 }
-                 .container {
-                   max-width: 600px;
-                   margin: 20px auto;
-                   background: #ffffff;
-                   border-radius: 8px;
-                   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                   overflow: hidden;
-                 }
-                 .header {
-                   background-color: #4CAF50;
-                   color: #ffffff;
-                   text-align: center;
-                   padding: 20px;
-                 }
-                 .header h1 {
-                   margin: 0;
-                   font-size: 24px;
-                 }
-                 .content {
-                   padding: 20px;
-                 }
-                 .content h2 {
-                   font-size: 20px;
-                   margin-bottom: 10px;
-                   color: #333333;
-                 }
-                 .info {
-                   margin-bottom: 20px;
-                 }
-                 .info p {
-                   margin: 5px 0;
-                   color: #555555;
-                   font-size: 16px;
-                 }
-                 .footer {
-                   background-color: #f1f1f1;
-                   text-align: center;
-                   padding: 10px;
-                   font-size: 14px;
-                   color: #777777;
-                 }
-                 .footer a {
-                   color: #4CAF50;
-                   text-decoration: none;
-                 }
-               </style>
-             </head>
-             <body>
-               <div class="container">
-                 <div class="header">
-                   <h1>Solicitud de Transporte</h1>
-                 </div>
-                 <div class="content">
-                   <h2>Detalles de la Solicitud</h2>
-                   <div class="info">
-                     <p><strong>Nombre:</strong> ${formData?.name || 'Sin información'}</p>
-                     <p><strong>Correo Electrónico:</strong> ${formData?.email || 'Sin información'}</p>
-                     <p><strong>Teléfono:</strong> ${formData?.phone || 'Sin información'}</p>
-                     <p><strong>Dirección de Origen:</strong> ${formData?.originAddress || 'Sin información'}</p>
-                     <p><strong>Dirección de Destino:</strong> ${formData?.destinationAddress || 'Sin información'}</p>
-                     <p><strong>Tipo de Carga:</strong> ${formData?.cargoType === 'light' ? 'Ligera' :
-             formData?.cargoType === 'medium' ? 'Mediana' :
-               formData?.cargoType === 'heavy' ? 'Pesada' : 'Sin información'}</p>
-                     <p><strong>Fecha:</strong> ${formData?.date || 'Sin información'}</p>
-                     <p><strong>Hora:</strong> ${formData?.time || 'Sin información'}</p>
-                     <p><strong>Comentarios:</strong> ${formData?.comments || 'Ninguno'}</p>
-                   </div>
-                 </div>
-                 <div class="footer">
-                   <p>Gracias por confiar en nosotros.</p>
-                   <p><a href="mailto:soporte@tuservicio.com">Contactar Soporte</a></p>
-                 </div>
-               </div>
-             </body>
-             </html>
-               `
-       }); */
-
+    emailjs.send("service_wc3pxfg", "template_4f0i199", templateParams).then(
+      (response) => {
+        console.log('SUCCESS!', response.status, response.text);
+      },
+      (error) => {
+        console.log('FAILED...', error);
+      },
+    )
   } catch (error) {
     console.error('Error sending email:', error);
     throw error;
