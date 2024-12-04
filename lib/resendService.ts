@@ -26,9 +26,9 @@ export const sendEmail = async (formData: FormData) => {
     };
 
     const body = JSON.stringify({
-      from: 'Acme <onboarding@resend.dev>',
+      from: 'Carga Service <onboarding@cargaservice.com>',
       to: ['davidguarisma@gmail.com'],
-      subject: 'hello world',
+      subject: 'Nueva Solicitud de Transporte',
       html: '<p>it works!</p>'
     });
 
