@@ -36,7 +36,7 @@ export function ServiceForm() {
     try {
       await sendEmail(formData);
       console.log(formData);
-      alert('Email sent successfully!');
+      alert('Correo electrónico enviado con éxito!');
     } catch (error) {
       console.log(error);
 

@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 
-const resend = new Resend('re_KqQjaZaR_Dw1pCUiUw8azFkNU9utKT7tA'); // Reemplaza con tu API Key
+const resend = new Resend('re_QthYx5UX_A2xgYy2Brqar8gYrmHFUwtZe'); // Reemplaza con tu API Key
 
 interface FormData {
   name: string;
