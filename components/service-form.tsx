@@ -50,7 +50,7 @@ export function ServiceForm() {
   return (
     <Card className="w-full max-w-2xl mx-auto">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-[#0052CC]">Solicitud de Servicio</CardTitle>
+        <CardTitle className="text-lg sm:text-2xl font-bold text-[#0052CC]">Solicitud de Servicio</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -219,7 +219,7 @@ export function ServiceForm() {
           <Button
             disabled={isSubmitting}
             type="submit" className="w-full bg-[#0052CC] hover:bg-[#0052CC]/90">
-            {isSubmitting ? 'Enviando...' : '  Calcular Precio y Solicitar Servicio'}
+            {isSubmitting ? 'Enviando...' : 'Solicitar Servicio'}
           </Button>
 
         </form>

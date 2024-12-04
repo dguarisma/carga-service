@@ -13,10 +13,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto space-y-12">
           {/* Hero Section */}
           <div className="text-center space-y-4">
-            <h1 className="text-5xl font-bold text-[#2078E6]">
+            <h1 className="sm:text-4xl text-2xl font-bold text-[#2078E6]">
               Bienvenidos a CargaService
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="sm:text-xl text-base text-gray-600">
               Servicios de Transporte Rápido y Seguro
             </p>
           </div>
@@ -24,10 +24,10 @@ export default function Home() {
           {/* Main Content */}
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-[#2078E6]">
+              <h2 className="sm:text-2xl text-balance text-lg font-bold text-[#2078E6]">
                 SERVICIOS DE TRASLADOS ADAPTADOS A TUS NECESIDADES:
               </h2>
-              <ul className="space-y-3 text-lg">
+              <ul className="space-y-3 text-base sm:text-lg">
                 <li className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-[#02AD25]" />
                   TRANSPORTE DE MERCANCIA

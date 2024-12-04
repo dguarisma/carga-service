@@ -10,10 +10,10 @@ export default function QuotePage() {
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto space-y-8">
           <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold text-[#2078E6]">
+            <h1 className="text-2xl sm:text-4xl font-bold text-[#2078E6]">
               Cotizar Servicio
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-base sm:text-xl text-gray-600">
               Complete el formulario para recibir una cotización
             </p>
           </div>
