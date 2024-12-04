@@ -1,101 +1,117 @@
-import Image from "next/image";
+import Image from 'next/image'
+import Link from 'next/link'
+import { Button } from "@/components/ui/button"
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
+import { ArrowRight, Phone, Mail, Instagram } from 'lucide-react'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      <main className="container mx-auto px-4 py-8">
+        <div className="max-w-6xl mx-auto space-y-12">
+          {/* Hero Section */}
+          <div className="text-center space-y-4">
+            <h1 className="text-5xl font-bold text-[#2078E6]">
+              Bienvenidos a CargaService
+            </h1>
+            <p className="text-xl text-gray-600">
+              Servicios de Transporte Rápido y Seguro
+            </p>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          {/* Main Content */}
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-bold text-[#2078E6]">
+                SE HACEN TODO TIPO DE VIAJES
+              </h2>
+              <ul className="space-y-3 text-lg">
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#02AD25]" />
+                  TRANSPORTE DE MERCANCIA
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#F20031]" />
+                  ACARREOS
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#DFCB00]" />
+                  MUDANZAS
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#2078E6]" />
+                  LIMPIEZA DE PROYECTOS
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#02AD25]" />
+                  COMPRA DE MATERIALES
+                </li>
+              </ul>
+              <div className="flex gap-4">
+                <Link href="/cotizar">
+                  <Button className="bg-[#2078E6] hover:bg-[#2078E6]/90">
+                    Cotizar Ahora
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            <div className="relative">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Formato%20para%20fotos%20reales-Bsh7eVciSnoImiP4RgKi9eKa15nx5s.png"
+                alt="CargaService Truck"
+                width={600}
+                height={400}
+                className="rounded-lg shadow-lg"
+              />
+              <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg">
+                <div className="text-sm font-semibold text-[#2078E6]">MEJOR PRECIO GARANTIZADO</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Section */}
+          <div className="bg-white rounded-lg shadow-lg p-8 mt-12">
+            <h2 className="text-2xl font-bold text-[#2078E6] mb-6 text-center">¡CONTÁCTANOS!</h2>
+            <div className="grid md:grid-cols-4 gap-6">
+              <a href="tel:+5076870-1740" className="flex items-center gap-3 p-4 rounded-lg border border-gray-200 hover:border-[#2078E6] transition-colors">
+                <Phone className="h-6 w-6 text-[#2078E6]" />
+                <div>
+                  <div className="font-semibold">Teléfono</div>
+                  <div className="text-sm text-gray-600">+507 6870-1740</div>
+                </div>
+              </a>
+              <a href="https://wa.link/w72qmg" className="flex items-center gap-3 p-4 rounded-lg border border-gray-200 hover:border-[#02AD25] transition-colors">
+                <svg className="h-6 w-6 text-[#02AD25]" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                <div>
+                  <div className="font-semibold">WhatsApp</div>
+                  <div className="text-sm text-gray-600">+507 6870-1740</div>
+                </div>
+              </a>
+              <a href="mailto:carga.service@gmail.com" className="flex items-center gap-3 p-4 rounded-lg border border-gray-200 hover:border-[#F20031] transition-colors">
+                <Mail className="h-6 w-6 text-[#F20031]" />
+                <div>
+                  <div className="font-semibold">Email</div>
+                  <div className="text-sm text-gray-600">carga.service@gmail.com</div>
+                </div>
+              </a>
+              <a href="https://instagram.com/cargaservice" className="flex items-center gap-3 p-4 rounded-lg border border-gray-200 hover:border-[#DFCB00] transition-colors">
+                <Instagram className="h-6 w-6 text-[#DFCB00]" />
+                <div>
+                  <div className="font-semibold">Instagram</div>
+                  <div className="text-sm text-gray-600">@cargaservice</div>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Footer />
     </div>
-  );
+  )
 }
+
