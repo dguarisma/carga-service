@@ -21,7 +21,7 @@ export const sendEmail = async (formData: FormData) => {
 
     const url = 'https://api.resend.com/emails';
     const headers = {
-      'Authorization': `Bearer ${resend}`, // Reemplaza con tu API Key
+      'Authorization': `Bearer re_QthYx5UX_A2xgYy2Brqar8gYrmHFUwtZe`, // Reemplaza con tu API Key
       'Content-Type': 'application/json'
     };
 
