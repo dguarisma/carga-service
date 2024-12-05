@@ -67,6 +67,24 @@ export function ServiceForm() {
 
       await sendEmail(dataToSend);
       alert('Correo electrónico enviado con éxito!');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        originAddress: '',
+        destinationAddress: '',
+        cargoType: 'light',
+        date: '',
+        time: '',
+        comments: '',
+        length: '',
+        height: '',
+        depth: '',
+        weight: '',
+        productImage: null as File | null,
+        productImageUrl: '',
+      });
+      window.location.reload();
     } catch (error) {
       console.error(error);
       alert('Error al enviar el correo electrónico. Por favor, inténtelo de nuevo.');
