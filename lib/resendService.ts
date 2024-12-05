@@ -10,6 +10,11 @@ interface FormData {
   date: string;
   time: string;
   comments?: string;
+  length: string,
+  height: string,
+  depth: string,
+  weight: string,
+  productImageUrl: string,
 }
 
 export const sendEmail = async (formData: FormData) => {
@@ -25,8 +30,8 @@ export const sendEmail = async (formData: FormData) => {
     });
 
     const templateParams = {
-
       to_name: formData?.name,
+      //to_email: "davidguarisma@gmail.com",
       to_email: "carga.service@gmail.com",
       name: formData?.name || "Sin información",
       email: formData?.email || "Sin información",
@@ -44,6 +49,11 @@ export const sendEmail = async (formData: FormData) => {
       date: formData?.date || "Sin información",
       time: formData?.time || "Sin información",
       comments: formData?.comments || "Ninguno",
+      length: formData.length || "Ninguno",
+      height: formData.height || "Ninguno",
+      depth: formData.depth || "Ninguno",
+      weight: formData.weight || "Ninguno",
+      productImage: formData.productImageUrl || "Ninguno",
     };
 
     emailjs.send("service_wc3pxfg", "template_4f0i199", templateParams).then(

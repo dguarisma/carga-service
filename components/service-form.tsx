@@ -27,32 +27,49 @@ export function ServiceForm() {
     depth: '',
     weight: '',
     productImage: null as File | null,
+    productImageUrl: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
-  /*   const { isLoaded } = useLoadScript({
-      googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
-    }) */
-
-  //const center = useMemo(() => ({ lat: 8.9824, lng: -79.5199 }), []) // Panama City coordinates
+  /*  const { isLoaded } = useLoadScript({
+     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
+   })
+ 
+   const center = useMemo(() => ({ lat: 8.9824, lng: -79.5199 }), []) // Panama City coordinates */
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const formDataToSend = new FormData();
-      Object.entries(formData).forEach(([key, value]) => {
-        if (key === 'productImage' && value instanceof File) {
-          formDataToSend.append(key, value);
-        } else {
-          formDataToSend.append(key, String(value));
-        }
-      });
-      await sendEmail(formDataToSend);
+      let imageUrl = '';
+      if (formData.productImage) {
+        const dataImage = new FormData();
+        dataImage.append('file', formData.productImage);
+        dataImage.append('upload_preset', 'service-carga'); // Asegúrate de reemplazar esto con tu upload preset de Cloudinary
+
+        const response = await fetch(
+          `https://api.cloudinary.com/v1_1/dyunwgwjk/image/upload`,
+          {
+            method: 'POST',
+            body: dataImage,
+          }
+        );
+
+        const data = await response.json();
+        imageUrl = data.secure_url;
+
+      }
+      const dataToSend = {
+        ...formData,
+        productImageUrl: imageUrl,
+      };
+
+      await sendEmail(dataToSend);
       alert('Correo electrónico enviado con éxito!');
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      alert('Error al enviar el correo electrónico. Por favor, inténtelo de nuevo.');
     } finally {
       setIsSubmitting(false);
     }
@@ -162,7 +179,7 @@ export function ServiceForm() {
                   </div>
                 </div>
               </div>
-              {/*               {isLoaded ? (
+              {/*  {isLoaded ? (
                 <div className="h-64 w-full">
                   <GoogleMap
                     zoom={10}
@@ -180,16 +197,16 @@ export function ServiceForm() {
             {/* Package Information Section */}
             <div className="grid gap-4 p-4 bg-gray-50 rounded-lg">
               <h3 className="text-lg font-semibold">Información del Paquete</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
                 <div className="grid gap-2">
-                  <Label htmlFor="length">Largo</Label>
+                  <Label htmlFor="length">Largo [Mts]</Label>
                   <div className="relative">
                     <Ruler className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
                     <Input
                       id="length"
                       type="number"
                       required
-                      placeholder="Largo"
+                      placeholder="Largo [Mts]"
                       className="pl-8"
                       value={formData.length}
                       onChange={(e) => setFormData({ ...formData, length: e.target.value })}
@@ -197,14 +214,14 @@ export function ServiceForm() {
                   </div>
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="height">Alto</Label>
+                  <Label htmlFor="height">Alto [Mts]</Label>
                   <div className="relative">
                     <Ruler className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
                     <Input
                       id="height"
                       type="number"
                       required
-                      placeholder="Alto"
+                      placeholder="Alto [Mts]"
                       className="pl-8"
                       value={formData.height}
                       onChange={(e) => setFormData({ ...formData, height: e.target.value })}
@@ -212,14 +229,14 @@ export function ServiceForm() {
                   </div>
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="depth">Profundidad</Label>
+                  <Label htmlFor="depth">Profundidad [Mts]</Label>
                   <div className="relative">
                     <Ruler className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
                     <Input
                       id="depth"
                       type="number"
                       required
-                      placeholder="Profundidad"
+                      placeholder="Profundidad [Mts]"
                       className="pl-8"
                       value={formData.depth}
                       onChange={(e) => setFormData({ ...formData, depth: e.target.value })}
@@ -253,7 +270,6 @@ export function ServiceForm() {
                     onClick={() => document.getElementById('productImage')?.click()}
                   >
                     {previewUrl ? (
-                      // eslint-disable-next-line @next/next/no-img-element
                       <img src={previewUrl} alt="Product preview" className="w-full h-full object-cover" />
                     ) : (
                       <ImageIcon className="h-6 w-6" />
