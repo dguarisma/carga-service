@@ -10,7 +10,7 @@ export function Header() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <Link href="/" className="flex items-center space-x-2 h-28 w-28 relative">
             <Image
-              src="/logo.jpeg"
+              src="/logo.webp"
               alt="CargaService Logo"
               fill
               className="aspect-auto object-contain absolute"

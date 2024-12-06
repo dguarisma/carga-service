@@ -60,7 +60,7 @@ export default function Home() {
             </div>
             <div className="relative">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Formato%20para%20fotos%20reales-Bsh7eVciSnoImiP4RgKi9eKa15nx5s.png"
+                src="/camion.webp"
                 alt="CargaService Truck"
                 width={600}
                 height={400}
