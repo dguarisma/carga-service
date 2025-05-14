@@ -25,7 +25,7 @@ export function VideoPlayer({ src, thumbnail, className = "" }: VideoPlayerProps
   }
 
   // Detener la propagación del evento click para que no interfiera con la navegación
-  const handleVideoClick = (e: React.MouseEvent) => {
+  const handleVideoClick = (e: React.MouseEvent | React.TouchEvent) => {
     e.stopPropagation()
   }
 

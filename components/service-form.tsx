@@ -1,38 +1,36 @@
-"use client"
+'use client'
 
-import type React from "react"
-import Image from "next/image"
-import { useState } from "react"
-import { MapPin, Calendar, Clock, Package, Contact, Mail, PhoneCall, Ruler, ImageIcon } from "lucide-react"
+import { useState } from 'react'
+import { MapPin, Calendar, Clock, Package, Contact, Mail, PhoneCall, Ruler, ImageIcon } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Textarea } from "@/components/ui/textarea"
-import { sendEmail } from "@/lib/resendService"
+import { sendEmail } from '@/lib/resendService'
 // import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api'
 
 export function ServiceForm() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    originAddress: "",
-    destinationAddress: "",
-    cargoType: "light",
-    date: "",
-    time: "",
-    comments: "",
-    length: "",
-    height: "",
-    depth: "",
-    weight: "",
+    name: '',
+    email: '',
+    phone: '',
+    originAddress: '',
+    destinationAddress: '',
+    cargoType: 'light',
+    date: '',
+    time: '',
+    comments: '',
+    length: '',
+    height: '',
+    depth: '',
+    weight: '',
     productImage: null as File | null,
-    productImageUrl: "",
+    productImageUrl: '',
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   /*  const { isLoaded } = useLoadScript({
      googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
@@ -41,67 +39,71 @@ export function ServiceForm() {
    const center = useMemo(() => ({ lat: 8.9824, lng: -79.5199 }), []) // Panama City coordinates */
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
     try {
-      let imageUrl = ""
+      let imageUrl = '';
       if (formData.productImage) {
-        const dataImage = new FormData()
-        dataImage.append("file", formData.productImage)
-        dataImage.append("upload_preset", "service-carga") // Asegúrate de reemplazar esto con tu upload preset de Cloudinary
+        const dataImage = new FormData();
+        dataImage.append('file', formData.productImage);
+        dataImage.append('upload_preset', 'service-carga'); // Asegúrate de reemplazar esto con tu upload preset de Cloudinary
 
-        const response = await fetch(`https://api.cloudinary.com/v1_1/dyunwgwjk/image/upload`, {
-          method: "POST",
-          body: dataImage,
-        })
+        const response = await fetch(
+          `https://api.cloudinary.com/v1_1/dyunwgwjk/image/upload`,
+          {
+            method: 'POST',
+            body: dataImage,
+          }
+        );
 
-        const data = await response.json()
-        imageUrl = data.secure_url
+        const data = await response.json();
+        imageUrl = data.secure_url;
+
       }
       const dataToSend = {
         ...formData,
         productImageUrl: imageUrl,
-      }
+      };
 
-      await sendEmail(dataToSend)
-      alert("Correo electrónico enviado con éxito!")
+      await sendEmail(dataToSend);
+      alert('Correo electrónico enviado con éxito!');
       setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        originAddress: "",
-        destinationAddress: "",
-        cargoType: "light",
-        date: "",
-        time: "",
-        comments: "",
-        length: "",
-        height: "",
-        depth: "",
-        weight: "",
+        name: '',
+        email: '',
+        phone: '',
+        originAddress: '',
+        destinationAddress: '',
+        cargoType: 'light',
+        date: '',
+        time: '',
+        comments: '',
+        length: '',
+        height: '',
+        depth: '',
+        weight: '',
         productImage: null as File | null,
-        productImageUrl: "",
-      })
-      window.location.reload()
+        productImageUrl: '',
+      });
+      window.location.reload();
     } catch (error) {
-      console.error(error)
-      alert("Error al enviar el correo electrónico. Por favor, inténtelo de nuevo.")
+      console.error(error);
+      alert('Error al enviar el correo electrónico. Por favor, inténtelo de nuevo.');
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+    const file = e.target.files?.[0];
     if (file) {
-      setFormData({ ...formData, productImage: file })
-      const reader = new FileReader()
+      setFormData({ ...formData, productImage: file });
+      const reader = new FileReader();
       reader.onloadend = () => {
-        setPreviewUrl(reader.result as string)
-      }
-      reader.readAsDataURL(file)
+        setPreviewUrl(reader.result as string);
+      };
+      reader.readAsDataURL(file);
     }
-  }
+  };
 
   return (
     <Card className="w-full max-w-2xl mx-auto">
@@ -135,7 +137,7 @@ export function ServiceForm() {
                     <PhoneCall className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
                     <Input
                       id="phone"
-                      type="tel"
+                      type='tel'
                       required
                       placeholder="Ingrese el Teléfono"
                       className="pl-8"
@@ -151,7 +153,7 @@ export function ServiceForm() {
                   <Mail className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
                   <Input
                     id="email"
-                    type="email"
+                    type='email'
                     required
                     placeholder="Ingrese el Correo electrónico"
                     className="pl-8"
@@ -283,16 +285,10 @@ export function ServiceForm() {
                     variant="outline"
                     size="icon"
                     className="w-32 h-32"
-                    onClick={() => document.getElementById("productImage")?.click()}
+                    onClick={() => document.getElementById('productImage')?.click()}
                   >
                     {previewUrl ? (
-                      <Image
-                        src={previewUrl || "/placeholder.svg"}
-                        alt="Product preview"
-                        className="w-full h-full object-cover"
-                        width={128}
-                        height={128}
-                      />
+                      <img src={previewUrl} alt="Product preview" className="w-full h-full object-cover" />
                     ) : (
                       <ImageIcon className="h-6 w-6" />
                     )}
@@ -398,8 +394,10 @@ export function ServiceForm() {
             </div>
           </div>
 
-          <Button disabled={isSubmitting} type="submit" className="w-full bg-[#0052CC] hover:bg-[#0052CC]/90">
-            {isSubmitting ? "Enviando..." : "Solicitar Servicio"}
+          <Button
+            disabled={isSubmitting}
+            type="submit" className="w-full bg-[#0052CC] hover:bg-[#0052CC]/90">
+            {isSubmitting ? 'Enviando...' : 'Solicitar Servicio'}
           </Button>
         </form>
       </CardContent>

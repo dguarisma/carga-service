@@ -26,6 +26,11 @@ const services = [
     image: "/services/compra-materiales.png",
     alt: "Compra de Materiales",
   },
+  {
+    id: 5,
+    image: "/services/camion.webp",
+    alt: "Transporte de Camiones",
+  },
 ]
 
 export function ServiceSlider() {
@@ -73,9 +78,8 @@ export function ServiceSlider() {
         {services.map((service, index) => (
           <div
             key={service.id}
-            className={`absolute top-0 h-full w-full transition-opacity duration-500 ${
-              index === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
+            className={`absolute top-0 h-full w-full transition-opacity duration-500 ${index === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
           >
             <Image
               src={service.image || "/placeholder.svg"}
@@ -115,9 +119,8 @@ export function ServiceSlider() {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-3 w-3 rounded-full border border-white ${
-              index === currentIndex ? "bg-[#2078E6]" : "bg-gray-800/70"
-            } transition-colors duration-300`}
+            className={`h-3 w-3 rounded-full border border-white ${index === currentIndex ? "bg-[#2078E6]" : "bg-gray-800/70"
+              } transition-colors duration-300`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

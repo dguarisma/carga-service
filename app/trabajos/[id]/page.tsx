@@ -9,6 +9,13 @@ import { Badge } from "@/components/ui/badge"
 import { VideoPlayer } from "@/components/video-player"
 import { trabajosRealizados } from "@/lib/data"
 
+// Esta función es necesaria para generar rutas estáticas con output: export
+export function generateStaticParams() {
+  return trabajosRealizados.map((trabajo) => ({
+    id: trabajo.id.toString(),
+  }))
+}
+
 export default function TrabajoDetalle({ params }: { params: { id: string } }) {
   const trabajo = trabajosRealizados.find((t) => t.id === Number.parseInt(params.id))
 
