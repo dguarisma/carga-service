@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-
+import Image from "next/image"
 import { useState } from "react"
 import { MapPin, Calendar, Clock, Package, Contact, Mail, PhoneCall, Ruler, ImageIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -286,10 +286,12 @@ export function ServiceForm() {
                     onClick={() => document.getElementById("productImage")?.click()}
                   >
                     {previewUrl ? (
-                      <img
+                      <Image
                         src={previewUrl || "/placeholder.svg"}
                         alt="Product preview"
                         className="w-full h-full object-cover"
+                        width={128}
+                        height={128}
                       />
                     ) : (
                       <ImageIcon className="h-6 w-6" />
