@@ -19,7 +19,7 @@ export const trabajosRealizados: TrabajoRealizadoProps[] = [
     location: "Paitilla",
     date: "Enero 2025",
     mediaType: "video",
-    mediaUrl: "/videos/WhatsApp-Video-2025-05-13-at-22.36.39.mp4",
+    mediaUrl: "/videos/mudanzas-basicas.mp4",
     thumbnail: "/projects/mudanzas-basicas.png",
   },
   {
@@ -47,7 +47,7 @@ export const trabajosRealizados: TrabajoRealizadoProps[] = [
     location: "Cangrejo y TumbaMuerto",
     date: "Marzo 2025",
     mediaType: "video",
-    mediaUrl: "/videos/WhatsApp-Video-2025-05-13-at-22.40.43.mp4",
+    mediaUrl: "/videos/limpieza-proyectos.mp4",
     thumbnail: "/services/limpieza-proyectos.png",
   },
 ]
