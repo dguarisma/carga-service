@@ -50,4 +50,14 @@ export const trabajosRealizados: TrabajoRealizadoProps[] = [
     mediaUrl: "/videos/limpieza-proyectos.mp4",
     thumbnail: "/services/limpieza-proyectos.png",
   },
+  {
+
+    id: 5,
+    title: "Servicio de Transporte Mueble.",
+    description: "Servicio de Transporte de Exhibidor",
+    location: "Todo",
+    date: "Agosto 2025",
+    mediaType: "image",
+    mediaUrl: "/projects/fletes.jpeg",
+  },
 ]
