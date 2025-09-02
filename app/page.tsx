@@ -73,7 +73,7 @@ export default function Home() {
           {/* Contact Section */}
           <div className="bg-white rounded-lg shadow-lg p-8 mt-12">
             <h2 className="text-2xl font-bold text-[#2078E6] mb-6 text-center">¡CONTÁCTANOS!</h2>
-            <div className="grid md:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-5 gap-3">
               <a
                 target="_black"
                 href="tel:+5076870-1740"
