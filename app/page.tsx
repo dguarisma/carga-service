@@ -120,25 +120,24 @@ const SERVICES = [
 
 /* ─── Coverage zones ───────────────────────────────────────── */
 const ZONES = [
-  { name: "Ciudad de Panamá", cities: "Balboa, Las Cumbres, Pacora, Tocumen, San Miguelito…" },
-  { name: "Panamá Oeste", cities: "La Chorrera, Arraiján, Capira, San Carlos, Chame…" },
-  { name: "Colón", cities: "Colón, Portobelo, Nombre de Dios, Donoso…" },
-  { name: "Coclé", cities: "Penonomé, Aguadulce, Antón, Natá, La Pintada…" },
-  { name: "Herrera", cities: "Chitré, Ocú, Parita, Pesé, Los Pozos…" },
-  { name: "Los Santos", cities: "Las Tablas, Tonosí, Pedasí, Guararé, Macaracas…" },
-  { name: "Veraguas", cities: "Santiago, Soná, Montijo, Atalaya, Las Palmas…" },
-  { name: "Chiriquí", cities: "David, Boquete, Volcán, Puerto Armuelles, Bugaba…" },
-  { name: "Bocas del Toro", cities: "Bocas Town, Changuinola, Almirante, Chiriquí Grande…" },
-  { name: "Darién", cities: "La Palma, Metetí, Yaviza, Santa Fe, Garachiné…" },
-  { name: "Comarcas Indígenas", cities: "Kuna Yala, Emberá-Wounaan, Ngäbe-Buglé, Madungandí…" },
-]
+  { name: "Bocas del Toro", cities: ["Bocas Town", "Changuinola", "Almirante", "Chiriquí Grande"] },
+  { name: "Coclé", cities: ["Penonomé", "Aguadulce", "Antón", "Natá", "La Pintada"] },
+  { name: "Colón", cities: ["Colón", "Portobelo", "Nombre de Dios", "Donoso"] },
+  { name: "Chiriquí", cities: ["David", "Boquete", "Volcán", "Puerto Armuelles", "Bugaba"] },
+  { name: "Darién", cities: ["La Palma", "Metetí", "Yaviza", "Santa Fe", "Garachiné"] },
+  { name: "Herrera", cities: ["Chitré", "Ocú", "Parita", "Pesé", "Los Pozos"] },
+  { name: "Los Santos", cities: ["Las Tablas", "Tonosí", "Pedasí", "Guararé", "Macaracas"] },
+  { name: "Panamá", cities: ["Ciudad de Panamá", "San Miguelito", "Tocumen", "Pacora", "Las Cumbres"] },
+  { name: "Panamá Oeste", cities: ["La Chorrera", "Arraiján", "Capira", "San Carlos", "Chame"] },
+  { name: "Veraguas", cities: ["Santiago", "Soná", "Montijo", "Atalaya", "Las Palmas"] },
+];
 
 /* ─── Why us ───────────────────────────────────────────────── */
 const WHY_US = [
   { icon: Shield, title: "Seguridad Garantizada", desc: "Tu carga protegida de principio a fin con embalaje profesional y manejo cuidadoso." },
   { icon: Clock, title: "Puntualidad Total", desc: "Llegamos a tiempo, siempre. Nos comprometemos con horarios y los cumplimos." },
   { icon: Award, title: "Mejor Precio del Mercado", desc: "Precios transparentes, sin cobros ocultos. Cotización detallada antes de comenzar." },
-  { icon: Globe, title: "Cobertura Nacional", desc: "Llegamos a las 10 provincias y comarcas. Donde estés en Panamá, estamos nosotros." },
+  { icon: Globe, title: "Cobertura Nacional", desc: "Llegamos a las 10 provincias. Donde estés en Panamá, estamos nosotros." },
   { icon: Star, title: "Equipo Profesional", desc: "Personal capacitado, uniformado y con experiencia en manejo de todo tipo de carga." },
   { icon: CheckCircle2, title: "Servicio 24/7", desc: "Disponibles todos los días del año. Llámanos o escríbenos en cualquier momento." },
 ]
@@ -175,8 +174,8 @@ export default function Home() {
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight">
-                Tu carga,<br />
-                <span className="text-[#1565E8]">nuestra<br className="hidden sm:block" /> misión.</span>
+                Transporte y Mudanzas<br />
+                <span className="text-[#1565E8]">en Panamá —<br className="hidden sm:block" /> servicio seguro</span>
               </h1>
 
               <p className="text-base lg:text-xl text-blue-200 mt-5 max-w-lg leading-relaxed">
@@ -193,7 +192,7 @@ export default function Home() {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <a href="https://wa.link/w72qmg" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <a href="https://wa.link/w72qmg" target="_blank" rel="noopener noreferrer nofollow" className="w-full sm:w-auto">
                   <Button
                     size="lg"
                     className="w-full bg-[#02AD25] hover:bg-[#028f1e] text-white text-base font-bold px-7 py-6 rounded-xl shadow-lg shadow-green-500/20"
@@ -218,7 +217,7 @@ export default function Home() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 pt-8 border-t border-white/10">
                 {[
                   { num: "500+", label: "Servicios" },
-                  { num: "11", label: "Provincias" },
+                  { num: "10", label: "Provincias" },
                   { num: "24/7", label: "Disponible" },
                   { num: "100%", label: "Garantizado" },
                 ].map((s) => (
@@ -268,9 +267,9 @@ export default function Home() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: "🚛", title: "Flota Propia", sub: "Vehículos de todo tamaño" },
-              { icon: "📍", title: "Cobertura Nacional", sub: "11 provincias y comarcas" },
+              { icon: "📍", title: "Cobertura Nacional", sub: "10 provincias" },
               { icon: "💰", title: "Sin Cobros Ocultos", sub: "Precio transparente siempre" },
-              { icon: "⚡", title: "Respuesta en 15 min", sub: "Cotización inmediata" },
+              { icon: "⚡", title: "Respuesta en minutos", sub: "Cotización inmediata" },
             ].map((item) => (
               <div key={item.title} className="flex items-center gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
                 <span className="text-3xl shrink-0">{item.icon}</span>
@@ -393,7 +392,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 mt-12">
-            <a href="https://wa.link/w72qmg" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.link/w72qmg" target="_blank" rel="noopener noreferrer nofollow">
               <Button
                 size="lg"
                 className="bg-[#02AD25] hover:bg-[#028f1e] text-white font-bold px-8 py-6 rounded-xl text-base gap-2"
@@ -447,7 +446,9 @@ export default function Home() {
                   </div>
                   <h3 className="text-white font-bold text-sm">{zone.name}</h3>
                 </div>
-                <p className="text-gray-400 text-xs leading-relaxed">{zone.cities}</p>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  {zone?.cities?.join(", ")}
+                </p>
               </div>
             ))}
           </div>
@@ -456,7 +457,7 @@ export default function Home() {
             <p className="text-blue-200 text-sm mb-5">
               ¿No ves tu ciudad? <span className="text-white font-bold">Escríbenos — probablemente también llegamos.</span>
             </p>
-            <a href="https://wa.link/w72qmg" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.link/w72qmg" target="_blank" rel="noopener noreferrer nofollow">
               <Button
                 size="lg"
                 className="bg-[#02AD25] hover:bg-[#028f1e] text-white font-bold px-10 py-6 rounded-xl text-base gap-2"
@@ -523,7 +524,7 @@ export default function Home() {
             Escríbenos ahora por WhatsApp y recibe tu cotización gratis en menos de 15 minutos. Sin compromisos.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="https://wa.link/w72qmg" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.link/w72qmg" target="_blank" rel="noopener noreferrer nofollow">
               <Button
                 size="lg"
                 className="bg-white text-[#02AD25] hover:bg-green-50 font-black text-base px-10 py-6 rounded-xl shadow-xl transition-all hover:scale-105"
@@ -564,7 +565,7 @@ export default function Home() {
             {/* WhatsApp */}
             <a
               href="https://wa.link/w72qmg"
-              target="_blank" rel="noopener noreferrer"
+              target="_blank" rel="noopener noreferrer nofollow"
               className="group flex items-center gap-5 bg-white border-2 border-gray-100 hover:border-[#02AD25] rounded-2xl p-6 transition-all hover:shadow-lg"
             >
               <div className="w-14 h-14 rounded-2xl bg-[#02AD25]/10 group-hover:bg-[#02AD25] flex items-center justify-center text-[#02AD25] group-hover:text-white transition-all shrink-0">
@@ -610,7 +611,7 @@ export default function Home() {
             {/* Instagram */}
             <a
               href="https://instagram.com/cargaservice"
-              target="_blank" rel="noopener noreferrer"
+              target="_blank" rel="noopener noreferrer nofollow"
               className="group flex items-center gap-5 bg-white border-2 border-gray-100 hover:border-pink-400 rounded-2xl p-6 transition-all hover:shadow-lg"
             >
               <div className="w-14 h-14 rounded-2xl bg-pink-50 group-hover:bg-pink-500 flex items-center justify-center text-pink-500 group-hover:text-white transition-all shrink-0">
@@ -626,7 +627,7 @@ export default function Home() {
             {/* TikTok */}
             <a
               href="https://www.tiktok.com/@carga.service?_t=ZM-8zLpKc0tQpy&_r=1"
-              target="_blank" rel="noopener noreferrer"
+              target="_blank" rel="noopener noreferrer nofollow"
               className="group flex items-center gap-5 bg-white border-2 border-gray-100 hover:border-black rounded-2xl p-6 transition-all hover:shadow-lg"
             >
               <div className="w-14 h-14 rounded-2xl bg-gray-100 group-hover:bg-black flex items-center justify-center text-black group-hover:text-white transition-all shrink-0">
@@ -662,7 +663,7 @@ export default function Home() {
             <MapPin className="h-5 w-5 text-[#1565E8] mt-0.5 shrink-0" />
             <p className="text-gray-500 text-sm">
               <span className="font-bold text-[#0B1426]">Oficina: </span>
-              PH Emerald Local 3B, Villa Zaita, Corregimiento Ernesto Campos, Panamá Norte
+              PH Emerald Local 3B, Villa Zaita, Panamá Norte, Panamá
             </p>
           </div>
         </div>

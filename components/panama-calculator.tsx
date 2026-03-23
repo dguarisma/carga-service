@@ -222,11 +222,10 @@ export function PanamaCalculator() {
                     key={cargo.id}
                     type="button"
                     onClick={() => setCargoType(cargo.id)}
-                    className={`p-4 rounded-xl border-2 text-left transition-all ${
-                      cargoType === cargo.id
+                    className={`p-4 rounded-xl border-2 text-left transition-all ${cargoType === cargo.id
                         ? "border-[#1565E8] bg-[#1565E8]/20 shadow-lg shadow-blue-500/20"
                         : "border-white/15 bg-white/5 hover:border-white/30"
-                    }`}
+                      }`}
                   >
                     <div className="text-2xl mb-1.5">{cargo.emoji}</div>
                     <div className="text-white font-bold text-sm leading-tight">{cargo.label}</div>

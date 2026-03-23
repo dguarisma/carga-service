@@ -8,7 +8,9 @@ const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
+  display: "swap",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -16,8 +18,34 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Carga Service",
-  description: "Servicios de Transporte Rápido y Seguro",
+  title: "Transporte y Mudanzas en Panamá | CargaService",
+  description:
+    "Empresa de transporte en Panamá. Mudanzas, acarreo, carga pesada, logística y entregas a domicilio. Cobertura en las 10 provincias y comarcas. Cotiza gratis por WhatsApp.",
+  keywords: [
+    "transporte en Panamá",
+    "mudanzas Panamá",
+    "acarreo Panamá",
+    "fletes Panamá",
+    "transporte de carga Panamá",
+    "mudanzas baratas Panamá",
+    "transporte de mercancía Panamá",
+    "servicio de transporte Panamá",
+    "logística Panamá",
+    "envíos Panamá"
+  ],
+  openGraph: {
+    title: "CargaService | Transporte en Panamá",
+    description:
+      "Mudanzas, transporte y logística en todo Panamá. Servicio rápido, seguro y al mejor precio.",
+    url: "https://cargaservice.com",
+    siteName: "CargaService",
+    locale: "es_PA",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -26,8 +54,36 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
+        <Script id="seo-jsonld" type="application/ld+json">
+          {`
+          {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "CargaService",
+  "url": "https://cargaservice.com",
+  "logo": "https://cargaservice.com/logo.webp",
+  "telephone": "+50768701740",
+  "email": "contacto@cargaservice.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "PH Emerald Local 3B, Villa Zaita",
+    "addressLocality": "Panamá Norte",
+    "addressRegion": "Panamá",
+    "postalCode": "00000",
+    "addressCountry": "PA"
+  },
+  "areaServed": "PA",
+  "description": "Servicios de transporte, mudanzas, acarreo y logística en Panamá con cobertura nacional.",
+  "sameAs": [
+    "https://instagram.com/cargaservice",
+    "https://www.tiktok.com/@carga.service",
+    "https://wa.link/w72qmg"
+  ]
+}
+          `}
+        </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17906221793"
           strategy="afterInteractive"
@@ -40,6 +96,7 @@ export default function RootLayout({
             gtag('config', 'AW-17906221793');
           `}
         </Script>
+
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -49,7 +106,7 @@ export default function RootLayout({
           <div className="container max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-6 gap-y-1">
             <span className="flex items-center gap-1.5">
               <span>⚡</span>
-              <span>Respuesta en <strong>15 minutos</strong></span>
+              <span>Respuesta en <strong> minutos</strong></span>
             </span>
             <a href="tel:+5076870-1740" className="flex items-center gap-1.5 text-[#02AD25] font-bold hover:underline">
               <span>📞</span>
@@ -57,7 +114,7 @@ export default function RootLayout({
             </a>
             <span className="hidden sm:flex items-center gap-1.5 text-gray-400">
               <span>🇵🇦</span>
-              <span>Cobertura Nacional · 11 Provincias</span>
+              <span>Cobertura Nacional · 10 Provincias</span>
             </span>
             <a href="https://wa.link/w72qmg" target="_blank" rel="noopener noreferrer" className="hidden sm:flex items-center gap-1.5 text-[#02AD25] font-bold hover:underline">
               <span>WhatsApp disponible ahora →</span>
@@ -72,6 +129,7 @@ export default function RootLayout({
             target="_blank"
             rel="noopener noreferrer nofollow"
             aria-label="Contactar por WhatsApp"
+            title="Contactar por WhatsApp"
           >
             <svg
               x="0px" y="0px"
