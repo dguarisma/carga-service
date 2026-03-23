@@ -44,6 +44,27 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Announcement bar */}
+        <div className="bg-[#0B1426] text-white text-xs py-2 px-4 text-center border-b border-white/10">
+          <div className="container max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-6 gap-y-1">
+            <span className="flex items-center gap-1.5">
+              <span>⚡</span>
+              <span>Respuesta en <strong>15 minutos</strong></span>
+            </span>
+            <a href="tel:+5076870-1740" className="flex items-center gap-1.5 text-[#02AD25] font-bold hover:underline">
+              <span>📞</span>
+              <span>+507 6870-1740</span>
+            </a>
+            <span className="hidden sm:flex items-center gap-1.5 text-gray-400">
+              <span>🇵🇦</span>
+              <span>Cobertura Nacional · 11 Provincias</span>
+            </span>
+            <a href="https://wa.link/w72qmg" target="_blank" rel="noopener noreferrer" className="hidden sm:flex items-center gap-1.5 text-[#02AD25] font-bold hover:underline">
+              <span>WhatsApp disponible ahora →</span>
+            </a>
+          </div>
+        </div>
+
         <div id="sirena_button" className="fixed bottom-4 right-4 z-50">
           <a
             id="floating_button_sirena"
